@@ -1,12 +1,7 @@
-import { createStore } from 'vuex';
+import { createStore, createLogger } from 'vuex';
 
-export default createStore({
-  // state: {
-  // },
-  // mutations: {
-  // },
-  // actions: {
-  // },
-  // modules: {
-  // },
+// eslint-disable-next-line import/prefer-default-export
+export const store = createStore({
+  plugins: process.env.NODE_ENV === 'development' ? [createLogger()] : [],
+  // modules: { User },
 });
