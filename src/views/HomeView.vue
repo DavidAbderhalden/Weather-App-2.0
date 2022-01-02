@@ -1,7 +1,7 @@
 <template>
   <HomeLayout backdrop="">
-    <template v-slot:header>header</template>
-    <template v-slot:main>main</template>
+    <template v-slot:header><p class="heading-4">header</p></template>
+    <template v-slot:main><p class="heading-5">main</p></template>
   </HomeLayout>
 </template>
 
