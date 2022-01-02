@@ -3,7 +3,7 @@
 * {
   font-family: 'Didact Gothic', sans-serif;
   color: #333;
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 
 [class^='heading'] {
@@ -50,4 +50,9 @@ h6,
 .caption {
   line-height: 2.25rem;
   font-size: 1.5rem;
+}
+
+.button {
+  font-size: 1.75rem;
+  line-height: 1.75rem;
 }

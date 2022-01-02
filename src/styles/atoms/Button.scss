@@ -1,0 +1,54 @@
+.button {
+  &--primary {
+    height: 3rem;
+    border: 0.125rem solid #b0c4de;
+    color: #b0c4de;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    &::before {
+      content: 'Add';
+    }
+    &.button--edit {
+      &::before {
+        content: 'Edit';
+      }
+    }
+    &:hover {
+      background-color: #f7f9fb;
+    }
+  }
+  &--reload {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 4rem;
+    background-image: url('../../assets/icons/refresh.svg');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 5rem 5rem;
+    transform: rotate(20deg);
+    transition: all 200ms ease-out;
+    &:hover{
+      transform: rotate(-20deg);
+      transition: all 200ms ease-out;
+      background-size: 5.5rem 5.5rem;
+    }
+  }
+  &--previous {
+    height: 6rem;
+    width: 6rem;
+    border: 0.125rem solid #b0c4de;
+    border-radius: 4rem;
+    background-image: url('../../assets/icons/pointer_back_blue.svg');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 2rem 2rem;
+    &:hover {
+      background-color: #f7f9fb;
+    }
+  }
+}
