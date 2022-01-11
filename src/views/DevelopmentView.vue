@@ -1,6 +1,6 @@
 <template>
   <div class="heading-6">Development</div>
-  <C :icon="'../../assets/icons/pointer_back.svg'" iconAlign="right" label="Label" />
+  <C :icon="'../../assets/icons/pointer_back.svg'" v-model="data" iconAlign="right" label="Label" />
 </template>
 
 <script lang="ts">
@@ -12,6 +12,6 @@ export default defineComponent({
   components: {
     C,
   },
-  data: () => ({ count: 0 }),
+  data: () => ({ data: '' }),
 });
 </script>

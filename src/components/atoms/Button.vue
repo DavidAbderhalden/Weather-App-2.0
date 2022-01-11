@@ -10,6 +10,7 @@ import ButtonCategories from '@/types/ButtonCategories';
 
 export default defineComponent({
   name: 'Button',
+  emits: ['click'],
   props: {
     category: {
       type: String as PropType<ButtonCategories>,

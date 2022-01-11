@@ -16,6 +16,10 @@ import IconAlignType from '@/types/InputFieldCategories';
 export default defineComponent({
   name: 'InputField',
   props: {
+    modelValue: {
+      type: String,
+      required: true,
+    },
     icon: {
       type: String,
       required: false,
@@ -41,6 +45,21 @@ export default defineComponent({
       classInput,
       classIcon,
     };
+  },
+
+  watch: {
+    innerInput: {
+      handler(v) {
+        this.$emit('update:modelValue', v);
+      },
+    },
+
+    modelValue: {
+      immediate: true,
+      handler(v) {
+        this.innerInput = v;
+      },
+    },
   },
 });
 </script>
