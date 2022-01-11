@@ -1,0 +1,19 @@
+.checkbox {
+  padding: 0;
+  margin: 0;
+  height: 3rem;
+  width: 3rem;
+  border: 0.25rem solid lightgray;
+  border-radius:100%;
+  background-image: url('../../assets/icons/minus-gray.svg');
+  background-size: 1rem 2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #F2F2F2;
+  transition: all 0.2s ease-in-out;
+  &--active {
+    border-color: rgb(255, 8, 8);
+    background-image: url('../../assets/icons/minus-white.svg');
+    background-color: rgb(255, 70, 70);
+  }
+}
