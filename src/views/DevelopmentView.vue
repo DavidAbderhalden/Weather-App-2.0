@@ -1,11 +1,11 @@
 <template>
   <div class="heading-6">Development</div>
-  <C v-for="(item, key) in data" :key="key" v-model="item.selected" />
+  <C :options="data" highlight="us" @selected="test($event)" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import C from '@/components/atoms/InputCheckbox.vue';
+import C from '@/components/atoms/DropdownOptions.vue';
 
 export default defineComponent({
   name: 'Development',
@@ -13,7 +13,18 @@ export default defineComponent({
     C,
   },
   data: () => ({
-    data: [{ selected: false }, { selected: true }, { selected: false }, { selected: false }],
+    data: [
+      { label: 'Endingen, Schweiz Kanton Aargau' },
+      { label: 'New York City, USA' },
+      { label: 'Berlin Brandenburg, Deutschland' },
+      { label: 'Melbourn Australia, Victoria' },
+    ],
   }),
+
+  methods: {
+    test(option: unknown) {
+      console.log(option);
+    },
+  },
 });
 </script>

@@ -1,0 +1,31 @@
+.dropdown {
+  width: 100%;
+  border: 0.1875rem solid #f5f5f5;
+  box-shadow: 1rem 1rem 5rem rgba(204, 204, 204, 0.16), 0px 0px 0px rgba(204, 204, 204, 0.12),
+    0px -16px 32px rgba(204, 204, 204, 0.08);
+  border-radius: 2rem;
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+  background-color: #fafdff;
+  &__wrapper {
+    background-color: #eaf4fd;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+}
+
+.wrapper__item {
+  background-color: #fafdff;
+  width: 100%;
+  padding: 1rem 0rem;
+}
+
+.item__text {
+  display: flex;
+  flex-direction: row;
+  white-space: pre;
+  &:hover {
+    color: #5485c5 !important;
+  }
+}
