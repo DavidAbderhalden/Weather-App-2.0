@@ -1,11 +1,11 @@
 <template>
   <div class="heading-6">Development</div>
-  <C :options="data" highlight="us" @selected="test($event)" />
+  <C :searchResults="data"/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import C from '@/components/atoms/DropdownOptions.vue';
+import C from '@/components/organisms/Header.vue';
 
 export default defineComponent({
   name: 'Development',

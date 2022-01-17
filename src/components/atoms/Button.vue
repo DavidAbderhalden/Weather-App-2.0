@@ -1,7 +1,7 @@
 <style lang="scss" src="@/styles/atoms/Button.scss" scoped></style>
 
 <template>
-  <div class="button" :class="[categoryClass, editClass]" />
+  <div class="button" :class="[categoryClass, editClass]" @click="handleClick"/>
 </template>
 
 <script lang="ts">

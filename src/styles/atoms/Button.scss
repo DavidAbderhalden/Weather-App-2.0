@@ -12,6 +12,8 @@
       content: 'Add';
     }
     &.button--edit {
+      background-color: #dcecfa !important;
+      color: #333;
       &::before {
         content: 'Edit';
       }
