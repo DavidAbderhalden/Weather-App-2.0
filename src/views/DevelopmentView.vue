@@ -1,11 +1,11 @@
 <template>
   <div class="heading-6">Development</div>
-  <C :searchResults="data"/>
+  <C message="This is a Notificaiton!" :visible="t"/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import C from '@/components/organisms/Header.vue';
+import C from '@/components/atoms/Notification.vue';
 
 export default defineComponent({
   name: 'Development',
@@ -19,6 +19,7 @@ export default defineComponent({
       { label: 'Berlin Brandenburg, Deutschland' },
       { label: 'Melbourn Australia, Victoria' },
     ],
+    t: true,
   }),
 
   methods: {
