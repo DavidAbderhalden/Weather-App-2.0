@@ -112,6 +112,11 @@
 );
 
 @include loadIcon(
+  delete,
+  svg,
+);
+
+@include loadIcon(
   loupe,
   svg,
 );

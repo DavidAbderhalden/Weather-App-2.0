@@ -2,7 +2,7 @@
 
 <template>
   <div class="wrapper">
-    <div class="icon" :class="classIcon" v-bind:style="iconStyle" />
+    <div v-if="isActive" class="icon" :class="[classIcon, icon]" @click="handleClick" />
     <input v-model="innerInput" class="input subtitle-1" :class="classInput" />
     <span class="label caption">{{ label }}</span>
   </div>
@@ -15,6 +15,7 @@ import IconAlignType from '@/types/InputFieldCategories';
 
 export default defineComponent({
   name: 'InputField',
+  emits: ['update:modelValue', 'click'],
   props: {
     modelValue: {
       type: String,
@@ -33,17 +34,22 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const innerInput = ref('');
     const iconStyle = computed(() => ({ backgroundImage: `url('${props.icon})` }));
-    const classInput = computed(() => ({ 'input--active': innerInput.value.length > 0 }));
+    const isActive = computed(() => innerInput.value.length > 0);
+    const classInput = computed(() => ({ 'input--active': isActive.value }));
     const classIcon = computed(() => `icon--${props.iconAlign}`);
+
+    const handleClick = () => emit('click');
 
     return {
       iconStyle,
       innerInput,
+      isActive,
       classInput,
       classIcon,
+      handleClick,
     };
   },
 

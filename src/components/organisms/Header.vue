@@ -5,51 +5,65 @@
     <div class="dropdown">
       <InputField
         v-model="inputValue"
-        icon="../../assets/icons/loupe.svg"
+        icon="delete"
         iconAlign="right"
         label="Search Location"
+        @click="setInputValue({ label: '' })"
       />
-      <DropdownOptions v-if="hasResults" :options="searchResults" :highlight="inputValue" />
+      <DropdownOptions
+        v-if="hasResults"
+        :options="searchResults"
+        :highlight="inputValue"
+        @selected="setInputValue($event)"
+      />
     </div>
-    <Button class="button" :edit="isEdit" @click="handleButtonClick" />
+    <Button class="button" :edit="modelValue" @click="handleButtonClick" />
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
+import OptionsCategories from '@/types/DropdownOptionsCategories';
 import Button from '@/components/atoms/Button.vue';
 import InputField from '@/components/atoms/InputField.vue';
 import DropdownOptions from '@/components/atoms/DropdownOptions.vue';
 
 export default defineComponent({
   name: 'Header',
+  emits: ['update:modelValue'],
   components: {
     Button,
     InputField,
     DropdownOptions,
   },
   props: {
+    modelValue: {
+      type: Boolean,
+      required: true,
+    },
     searchResults: {
       type: Array,
       required: false,
     },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const inputValue = ref('');
-    const isEdit = ref(false);
+    // eslint-disable-next-line max-len
+    const hasResults = computed(() => (props.searchResults ? props.searchResults.length > 0 : false));
 
-    const hasResults = computed(() => (
-      props.searchResults ? props.searchResults.length > 0 : false));
+    const setInputValue = (value: OptionsCategories) => {
+      inputValue.value = value.label;
+    };
 
     const handleButtonClick = () => {
-      isEdit.value = !isEdit.value;
+      emit('update:modelValue', !props.modelValue);
     };
 
     return {
       inputValue,
-      isEdit,
-      handleButtonClick,
       hasResults,
+      setInputValue,
+      handleButtonClick,
     };
   },
 });

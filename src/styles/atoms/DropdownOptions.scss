@@ -1,4 +1,5 @@
 .dropdown {
+  z-index: 1;
   width: 100%;
   border: 0.1875rem solid #dcecfa;;
   box-shadow: 1rem 1rem 5rem rgba(204, 204, 204, 0.16), 0px 0px 0px rgba(204, 204, 204, 0.12),
@@ -20,7 +21,7 @@
   width: 100%;
   padding: 1rem 0rem;
   &:hover{
-    background-color: #dcecfa;
+    // background-color: #dcecfa;
   }
 }
 

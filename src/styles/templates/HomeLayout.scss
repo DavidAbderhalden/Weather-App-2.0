@@ -10,11 +10,11 @@
 
 .header {
   grid-area: head;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .main {
   grid-area: main;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
