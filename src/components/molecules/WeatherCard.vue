@@ -2,22 +2,39 @@
 
 <template>
   <div class="wrapper">
-    <div class="text">
-      <p class="text__location">{{ location }}</p>
-      <p class="text__temperature">{{ temp }}</p>
+    <div class="card" :class="classEdit">
+      <div class="card__text">
+        <p class="text__location heading-5">{{ location }}</p>
+        <p class="text__temperature caption">{{ temp }}</p>
+      </div>
+      <div class="weather-icon" :class="classIcon" />
     </div>
-
-    <div class="weather-icon" :class="classIcon" />
+    <InputCheckbox v-if="edit" v-model="innerMarked" />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { ref, computed, defineComponent } from 'vue';
 import icon from '@/functions/weather';
+
+import InputCheckbox from '@/components/atoms/InputCheckbox.vue';
 
 export default defineComponent({
   name: 'WeatherCard',
+
+  components: {
+    InputCheckbox,
+  },
+
   props: {
+    modelValue: {
+      type: Boolean,
+      required: true,
+    },
+    edit: {
+      type: Boolean,
+      default: false,
+    },
     location: {
       type: String,
       required: true,
@@ -33,8 +50,24 @@ export default defineComponent({
   },
   setup(props) {
     const classIcon = computed(() => icon(props.weatherId));
+    const classEdit = computed(() => ({ 'card--edit': props.edit }));
 
-    return { classIcon };
+    const innerMarked = ref(false);
+
+    return { classIcon, classEdit, innerMarked };
+  },
+
+  watch: {
+    innerMarked() {
+      this.$emit('update:modelValue', this.innerMarked);
+    },
+
+    modelValue: {
+      immediate: true,
+      handler(v) {
+        this.innerMarked = v;
+      },
+    },
   },
 });
 </script>

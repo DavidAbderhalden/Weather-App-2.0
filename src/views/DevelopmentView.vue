@@ -1,12 +1,11 @@
 <template>
   <div class="heading-6">Development</div>
-  <C message="This is a Notificaiton!" :visible="t" />
-  <div class="rainy-1"></div>
+  <C location="Zürich 8050, Schweiz" temp="0.3 C" :weatherId="1" v-model="t" :edit="t"/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import C from '@/components/organisms/Header.vue';
+import C from '@/components/molecules/WeatherCard.vue';
 
 export default defineComponent({
   name: 'Development',
