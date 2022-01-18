@@ -1,11 +1,12 @@
 <template>
   <div class="heading-6">Development</div>
-  <C message="This is a Notificaiton!" :visible="t"/>
+  <C message="This is a Notificaiton!" :visible="t" />
+  <div class="rainy-1"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import C from '@/components/atoms/Notification.vue';
+import C from '@/components/organisms/Header.vue';
 
 export default defineComponent({
   name: 'Development',

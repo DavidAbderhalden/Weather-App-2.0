@@ -1,0 +1,142 @@
+@mixin loadIcons($name, $type, $min, $max) {
+  @for $i from $min through $max {
+    .#{$name}#{$i} {
+      @include icon-base-class(path($name + $i + '.' + $type));
+    }
+  }
+}
+
+@mixin loadIcon($name, $type) {
+  .#{$name} {
+    @include icon-base-class(path($name + '.' + $type));
+  }
+}
+
+@function path($icon) {
+  @return '~@/assets/icons/' + $icon;
+}
+
+@mixin icon-base-class($path) {
+  background-image: url($path);
+  background-position: center;
+  background-size: 8rem;
+  background-repeat: no-repeat;
+  height: 8rem;
+  width: 8rem;
+}
+
+/**------------ Weather icons ------------*/
+// TODO: Add missing-icon class
+
+@include loadIcons(
+  cloudy-day-,
+  svg,
+  1,
+  3
+);
+
+@include loadIcons(
+  cloudy-day-,
+  svg,
+  1,
+  3
+);
+
+
+@include loadIcons(
+  cloudy-night-,
+  svg,
+  1,
+  3
+);
+
+@include loadIcons(
+  rainy-,
+  svg,
+  1,
+  7
+);
+
+@include loadIcons(
+  snowy-,
+  svg,
+  1,
+  6
+);
+
+@include loadIcon(
+  day,
+  svg,
+);
+
+@include loadIcon(
+  night,
+  svg,
+);
+
+@include loadIcon(
+  cloudy,
+  svg,
+);
+
+@include loadIcon(
+  thunder,
+  svg,
+);
+
+@include loadIcon(
+  weather_sagittarius,
+  svg,
+);
+
+@include loadIcon(
+  weather_sunset,
+  svg,
+);
+
+@include loadIcon(
+  weather-sprite,
+  svg,
+);
+
+@include loadIcon(
+  weather,
+  svg,
+);
+
+/**------------ Other Icons ------------*/
+
+@include loadIcon(
+  refresh,
+  svg,
+);
+
+@include loadIcon(
+  loupe,
+  svg,
+);
+
+@include loadIcon(
+  minus-black,
+  svg,
+);
+
+@include loadIcon(
+  minus-gray,
+  svg,
+);
+
+@include loadIcon(
+  minus-white,
+  svg,
+);
+
+@include loadIcon(
+  pointer_back,
+  svg,
+);
+
+@include loadIcon(
+  pointer_back_blue,
+  svg,
+);

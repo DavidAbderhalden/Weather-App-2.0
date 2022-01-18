@@ -5,7 +5,7 @@
     <div class="dropdown">
       <InputField
         v-model="inputValue"
-        icon="@/assets/icons/loupe.svg"
+        icon="../../assets/icons/loupe.svg"
         iconAlign="right"
         label="Search Location"
       />
