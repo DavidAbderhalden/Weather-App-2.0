@@ -1,7 +1,38 @@
-import { createStore, createLogger } from 'vuex';
+import { createStore } from 'vuex';
+import { WeatherCard } from '@/types/VuexStoreTypes';
 
-// eslint-disable-next-line import/prefer-default-export
-export const store = createStore({
-  plugins: process.env.NODE_ENV === 'development' ? [createLogger()] : [],
-  // modules: { User },
+export interface State {
+  weatherCards: WeatherCard[];
+  searchResults: string[];
+}
+
+export default createStore<State>({
+
+  getters: {
+    weatherCards: (state) => state.weatherCards,
+    searchResults: (state) => state.searchResults,
+  },
+
+  state: {
+    weatherCards: [],
+    searchResults: [],
+  },
+
+  mutations: {
+    /*
+    ADD_WEATHER_ITEM
+    MODIFY_WEATHER_ITEM
+    DELETE_WEATHER_ITEM
+    RESET_ALL
+    */
+
+  },
+
+  actions: {
+    /*
+    fetchWeather
+    updateWeather
+    fetchSearchResults
+    */
+  },
 });
