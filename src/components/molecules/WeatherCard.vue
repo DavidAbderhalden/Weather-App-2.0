@@ -18,7 +18,7 @@ import {
   ref, computed, defineComponent, PropType,
 } from 'vue';
 import WeatherCardType from '@/types/WeatherCardCategories';
-import icon from '@/functions/weather';
+import { icon } from '@/functions/weather';
 
 import InputCheckbox from '@/components/atoms/InputCheckbox.vue';
 

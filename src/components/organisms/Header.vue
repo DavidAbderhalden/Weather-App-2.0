@@ -9,6 +9,7 @@
         iconAlign="right"
         label="Search Location"
         @click="setInputValue({ label: '' })"
+        @enter="addWeatherCard"
         ref="inputField"
       />
       <DropdownOptions
@@ -54,6 +55,9 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
+    const addWeatherCard = () => {
+      store.dispatch('addWeatherCard');
+    };
     const inputValue = ref('');
     const inputField = ref(InputField);
     // eslint-disable-next-line max-len
@@ -85,6 +89,7 @@ export default defineComponent({
     };
 
     return {
+      addWeatherCard,
       inputField,
       handleInput,
       inputValue,

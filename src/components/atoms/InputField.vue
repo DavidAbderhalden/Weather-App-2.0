@@ -9,6 +9,7 @@
       :class="classInput"
       @focus="handleFocus"
       @blur="handleBlur"
+      @keypress.enter="handleEnter"
     />
     <span class="label caption">{{ label }}</span>
   </div>
@@ -21,7 +22,7 @@ import IconAlignType from '@/types/InputFieldCategories';
 
 export default defineComponent({
   name: 'InputField',
-  emits: ['update:modelValue', 'click'],
+  emits: ['update:modelValue', 'click', 'enter'],
   props: {
     modelValue: {
       type: String,
@@ -47,7 +48,12 @@ export default defineComponent({
       focused.value = true;
     };
     const handleBlur = () => {
-      focused.value = false;
+      setTimeout(() => {
+        focused.value = false;
+      }, 50);
+    };
+    const handleEnter = () => {
+      emit('enter');
     };
 
     const iconStyle = computed(() => ({ backgroundImage: `url('${props.icon})` }));
@@ -60,7 +66,8 @@ export default defineComponent({
     return {
       focused,
       handleFocus,
-      // handleBlur,
+      handleBlur,
+      handleEnter,
       iconStyle,
       innerInput,
       isActive,
