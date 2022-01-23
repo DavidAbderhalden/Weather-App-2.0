@@ -1,7 +1,6 @@
 .dropdown {
   z-index: 1;
-  width: 100%;
-  border: 0.1875rem solid #dcecfa;;
+  border: 0.1875rem solid #dcecfa;
   box-shadow: 1rem 1rem 5rem rgba(204, 204, 204, 0.16), 0px 0px 0px rgba(204, 204, 204, 0.12),
     0px -16px 32px rgba(204, 204, 204, 0.08);
   border-radius: 2rem;
@@ -17,15 +16,19 @@
 }
 
 .wrapper__item {
+  box-sizing: border-box;
   background-color: #fafdff;
-  width: 100%;
+  width: calc(100vw - 19rem);
   padding: 1rem 0rem;
-  &:hover{
+  &:hover {
     // background-color: #dcecfa;
   }
 }
 
 .item__text {
+  overflow: hidden;              /* "overflow"-Wert darf nicht "visible" sein */
+  white-space: nowrap;
+  text-overflow: ellipsis;
   display: flex;
   flex-direction: row;
   white-space: pre;

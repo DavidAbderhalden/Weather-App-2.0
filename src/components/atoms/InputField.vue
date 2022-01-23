@@ -3,7 +3,13 @@
 <template>
   <div class="wrapper">
     <div v-if="isActive" class="icon" :class="[classIcon, icon]" @click="handleClick" />
-    <input v-model="innerInput" class="input subtitle-1" :class="classInput" />
+    <input
+      v-model="innerInput"
+      class="input subtitle-1"
+      :class="classInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
+    />
     <span class="label caption">{{ label }}</span>
   </div>
 </template>
@@ -36,6 +42,14 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const innerInput = ref('');
+    const focused = ref(false);
+    const handleFocus = () => {
+      focused.value = true;
+    };
+    const handleBlur = () => {
+      focused.value = false;
+    };
+
     const iconStyle = computed(() => ({ backgroundImage: `url('${props.icon})` }));
     const isActive = computed(() => innerInput.value.length > 0);
     const classInput = computed(() => ({ 'input--active': isActive.value }));
@@ -44,6 +58,9 @@ export default defineComponent({
     const handleClick = () => emit('click');
 
     return {
+      focused,
+      handleFocus,
+      // handleBlur,
       iconStyle,
       innerInput,
       isActive,

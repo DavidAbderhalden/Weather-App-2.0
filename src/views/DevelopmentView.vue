@@ -1,16 +1,20 @@
 <template>
   <div class="heading-6">Development</div>
-  <C location="Zürich 8050, Schweiz" temp="0.3 C" :weatherId="1" v-model="t" :edit="t"/>
+  <!-- <C location="Zürich 8050, Schweiz" temp="0.3 C" :weatherId="1" v-model="t" :edit="t" /> -->
+  <button @click="handleClick">Test</button>
+  <p>{{ searchResults }}</p>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import C from '@/components/molecules/WeatherCard.vue';
+import { mapGetters } from 'vuex';
+import store from '@/store/index';
+// import C from '@/components/molecules/WeatherCard.vue';
 
 export default defineComponent({
   name: 'Development',
   components: {
-    C,
+    // C,
   },
   data: () => ({
     data: [
@@ -22,9 +26,15 @@ export default defineComponent({
     t: true,
   }),
 
+  computed: {
+    ...mapGetters({
+      searchResults: 'searchResults',
+    }),
+  },
+
   methods: {
-    test(option: unknown) {
-      console.log(option);
+    handleClick() {
+      store.dispatch('fetchSearchResults');
     },
   },
 });

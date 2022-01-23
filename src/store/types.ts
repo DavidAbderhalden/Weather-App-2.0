@@ -1,19 +1,31 @@
-export type WeatherOfDay = {
+type RawSearchResult = {
+  confidence: number;
+  formatted: string;
+};
+
+type WeatherOfDay = {
   dayId: number;
   minTemp: number;
   maxTemp: number;
   icon: string;
-}
+};
 
-export type WeatherOfHour = {
+type WeatherOfHour = {
   hour: number;
   minTemp: number;
   maxTemp: number;
   icon: string;
-}
+};
 
-export type WeatherCard = {
+type WeatherCard = {
   weatherId: number;
   weeklyWeather: Array<WeatherOfDay>;
   hourlyWeather: Array<WeatherOfHour>;
-}
+};
+
+export {
+  RawSearchResult,
+  WeatherOfDay,
+  WeatherOfHour,
+  WeatherCard,
+};

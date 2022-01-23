@@ -4,7 +4,7 @@
   <HomeLayout backdrop="../../assets/logo.png">
     <template v-slot:header>
       <div class="header">
-        <Header :searchResults="tempRes" v-model="isEdit" />
+        <Header :searchResults="searchResults" v-model="isEdit" />
       </div>
     </template>
     <template v-slot:main>
@@ -37,6 +37,7 @@ import HomeLayout from '@/components/templates/HomeLayout.vue';
 import Header from '@/components/organisms/Header.vue';
 import Notification from '@/components/atoms/Notification.vue';
 import WeatherCard from '@/components/molecules/WeatherCard.vue';
+import store from '@/store/index';
 
 export default defineComponent({
   name: 'Home',
@@ -49,12 +50,7 @@ export default defineComponent({
   setup() {
     const isEdit = ref(false);
 
-    const tempRes = ref([
-      { label: 'Endingen, Schweiz Kanton Aargau' },
-      { label: 'New York City, USA' },
-      { label: 'Berlin Brandenburg, Deutschland' },
-      { label: 'Melbourn Australia, Victoria' },
-    ]);
+    const searchResults = computed(() => store.getters.searchResults);
 
     const tempCard = ref([
       {
@@ -126,7 +122,7 @@ export default defineComponent({
     };
 
     return {
-      tempRes,
+      searchResults,
       tempCard,
       isEdit,
       hasMarked,
