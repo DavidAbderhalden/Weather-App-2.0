@@ -2,7 +2,6 @@ import { createStore } from 'vuex';
 import { WeatherCard, RawSearchResult } from '@/store/types';
 import { openCageEndpoint, weatherMapEndpoint } from '@/services/api';
 import OptionsCategories from '@/types/DropdownOptionsCategories';
-import hash from '@/functions/utils';
 import { parseWeeklyWeather, parseHourlyWeather } from '@/functions/weather';
 
 export interface State {
@@ -54,7 +53,7 @@ export default createStore<State>({
       openCageEndpoint
         .get('/', {
           params: {
-            q: input,
+            q: input.name,
           },
         })
         .then((response) => {
@@ -66,6 +65,7 @@ export default createStore<State>({
           sorted.forEach((element: RawSearchResult) => {
             commit('ADD_SEARCH_RESULT', element);
           });
+          if (input.direct) this.dispatch('addWeatherCard');
         });
     },
 
