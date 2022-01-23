@@ -37,10 +37,14 @@ export default createStore<State>({
     ADD_WEATHER_ITEM(state, item) {
       state.weatherCards.push(item);
     },
+
+    DELETE_WEATHER_ITEMS(state, items: WeatherCard[]) {
+      Object.values(items).forEach((item) => {
+        state.weatherCards.splice(state.weatherCards.indexOf(item), 1);
+      });
+    },
     /*
-    ADD_WEATHER_ITEM
     MODIFY_WEATHER_ITEM
-    DELETE_WEATHER_ITEM
     RESET_ALL
     */
   },
@@ -68,15 +72,15 @@ export default createStore<State>({
     addWeatherCard() {
       const location = this.state.searchResults[0];
       const coords = { lat: location.lat, lon: location.lon };
-      this.dispatch('fetchWeather', coords);
+      this.dispatch('fetchWeather', { coords, name: location.label });
     },
 
-    fetchWeather({ commit }, coords) {
+    fetchWeather({ commit }, data) {
       weatherMapEndpoint
         .get('/', {
           params: {
-            lat: coords.lat,
-            lon: coords.lon,
+            lat: data.coords.lat,
+            lon: data.coords.lon,
             exclude: 'minutely',
           },
         })
@@ -88,6 +92,8 @@ export default createStore<State>({
             },
             weeklyWeather: parseWeeklyWeather(response.data.daily),
             hourlyWeather: parseHourlyWeather(response.data.hourly),
+            location: data.name,
+            marked: false,
           };
 
           commit('ADD_WEATHER_ITEM', card);

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 <style lang="scss" src="@/styles/views/HomeView.scss" scoped></style>
 
 <template>
@@ -13,7 +14,7 @@
           <div class="card-wrapper__fader" />
           <WeatherCard
             class="card-wrapper__card"
-            v-for="(card, key) in tempCard"
+            v-for="(card, key) in weatherCards"
             :key="key"
             :weather="card"
             :edit="isEdit"
@@ -51,79 +52,19 @@ export default defineComponent({
     const isEdit = ref(false);
 
     const searchResults = computed(() => store.getters.searchResults);
+    const weatherCards = computed(() => store.getters.weatherCards);
 
-    const tempCard = ref([
-      {
-        location: 'Endingen, Schweiz Kanton Aargau',
-        temp: '3.2 C',
-        id: 2,
-        marked: false,
-      },
-      {
-        location: 'New York City, USA',
-        temp: '14.2 C',
-        id: 1,
-        marked: false,
-      },
-      {
-        location: 'Berlin Brandenburg, Deutschland',
-        temp: '0.2 C',
-        id: 2,
-        marked: false,
-      },
-      {
-        location: 'Melbourn Australia, Victoria',
-        temp: '34 C',
-        id: 3,
-        marked: false,
-      },
-      {
-        location: 'Melbourn Australia, Victoria',
-        temp: '34 C',
-        id: 3,
-        marked: false,
-      },
-      {
-        location: 'Melbourn Australia, Victoria',
-        temp: '34 C',
-        id: 3,
-        marked: false,
-      },
-      {
-        location: 'Melbourn Australia, Victoria',
-        temp: '34 C',
-        id: 3,
-        marked: false,
-      },
-      {
-        location: 'Melbourn Australia, Victoria',
-        temp: '34 C',
-        id: 3,
-        marked: false,
-      },
-      {
-        location: 'Melbourn Australia, Victoria',
-        temp: '34 C',
-        id: 3,
-        marked: false,
-      },
-      {
-        location: 'Melbourn Australia, Victoria',
-        temp: '34 C',
-        id: 3,
-        marked: false,
-      },
-    ]);
-
-    const hasMarked = computed(() => tempCard.value.find((card) => card.marked));
+    // eslint-disable-next-line max-len
+    const hasMarked = computed(() => weatherCards.value.find((card: { marked: boolean }) => card.marked));
     const removeCards = () => {
-      tempCard.value = tempCard.value.filter((card) => !card.marked);
+      const untrackedCards = weatherCards.value.filter((card: { marked: boolean }) => card.marked);
+      store.commit('DELETE_WEATHER_ITEMS', untrackedCards);
       isEdit.value = false;
     };
 
     return {
       searchResults,
-      tempCard,
+      weatherCards,
       isEdit,
       hasMarked,
       removeCards,

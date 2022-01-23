@@ -27,6 +27,7 @@
 import {
   computed,
   defineComponent,
+  PropType,
   ref,
   watch,
 } from 'vue';
@@ -50,7 +51,7 @@ export default defineComponent({
       required: true,
     },
     searchResults: {
-      type: Array,
+      type: Array as PropType<OptionsCategories[]>,
       required: false,
     },
   },
@@ -64,7 +65,9 @@ export default defineComponent({
     const hasResults = computed(() => (props.searchResults ? props.searchResults.length > 0 : false) && inputValue.value.length > 0 && inputField.value.focused);
 
     const setInputValue = (value: OptionsCategories) => {
-      inputValue.value = value.label;
+      inputValue.value = '';
+      const coords = props.searchResults?.find((result) => result.label === value.label);
+      store.dispatch('fetchWeather', { coords, name: value.label });
       store.commit('RESET_SEARCH_RESULTS');
     };
     const searchTimeout = ref(false);

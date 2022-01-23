@@ -38,6 +38,8 @@ type WeatherOfHour = {
 };
 
 type WeatherCard = {
+  location: string,
+  marked: boolean,
   currentWeather: {
     temp: number,
     icon: number,

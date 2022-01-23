@@ -7,16 +7,23 @@ import {
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const icon = (id: number) => {
-  switch (id) {
-    case 1:
+  switch (true) {
+    case id >= 200 && id <= 232:
+      return 'thunder' as string;
+    case id >= 300 && id <= 321:
       return 'rainy-1' as string;
-    case 2:
-      return 'rainy-2' as string;
-    case 3:
+    case id >= 500 && id <= 531:
       return 'rainy-3' as string;
-    // TODO: implement different cases
+    case id >= 600 && id <= 622:
+      return 'snowy-3' as string;
+    case id >= 701 && id <= 781:
+      return 'weather_sagittarius' as string;
+    case id === 800:
+      return 'day' as string;
+    case id >= 801 && id <= 804:
+      return 'cloudy-day-3' as string;
     default:
-      return 'icon-missing' as string;
+      return 'unknown-icon' as string;
   }
 };
 
