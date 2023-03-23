@@ -1,0 +1,27 @@
+.backdrop {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 35% 15% auto;
+  grid-template-columns: 100vw;
+  grid-template-areas:
+    'head'
+    'section'
+    'main';
+}
+
+.header {
+  grid-area: head;
+  overflow: hidden;
+}
+
+.section {
+  grid-area: section;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.main {
+  grid-area: main;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

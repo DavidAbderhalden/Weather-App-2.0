@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+
+* {
+  font-family: 'Didact Gothic', sans-serif;
+  color: #333;
+  vertical-align: baseline;
+}
+
+[class^='heading'] {
+  letter-spacing: 0.0625rem;
+}
+
+h1,
+.heading-1 {
+  font-size: 4.5rem;
+  line-height: 5.5rem;
+}
+
+h2,
+.heading-2 {
+  font-size: 4rem;
+  line-height: 5rem;
+}
+
+h3,
+.heading-3 {
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+}
+
+h4,
+.heading-4 {
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+h5,
+.heading-5 {
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+  font-weight: 500;
+}
+
+h6,
+.heading-6 {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+.caption {
+  line-height: 2.25rem;
+  font-size: 1.5rem;
+}
+
+.button {
+  font-size: 1.75rem;
+  line-height: 1.75rem;
+}
+
+.subtitle-1 {
+  font-size: 2rem;
+  line-height: 3rem;
+}
